@@ -8,18 +8,13 @@ static bool CheckParamValidity(int param, int minimum) {
     return param >= minimum;
 }
 
-Player::Player(string name, int hp, int force) {
+Player::Player(string name) {
     this->name = name;
-
-    if(!CheckParamValidity(hp, 1)) {
-        hp = 100;
-    }
-    if(!CheckParamValidity(force, 1)) {
-        force = 5;
-    }
-    this->hp = hp;
-    this->max_hp = hp;
-    this->force = force;
+    this->hp = 100;
+    this->max_hp = 100;
+    this->force = 10;
+    this->coins = 0;
+    this->level = 1;
 }
 
 Player::~Player() = default;

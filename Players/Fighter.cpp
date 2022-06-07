@@ -3,3 +3,9 @@
 //
 
 #include "Fighter.h"
+
+int Fighter::getAttackStrength() const {
+    return this->force * 2 + this->level;
+}
+
+

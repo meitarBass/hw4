@@ -10,7 +10,9 @@
 using namespace std;
 
 class Player {
-    int level = 1, coins = 0, force, hp, max_hp;
+
+protected:
+    int level, coins, force, hp, max_hp;
     string name;
 
 public:
@@ -23,7 +25,7 @@ public:
     * @return
     *      A new instance of player.
     */
-    explicit Player(string name, int hp = 100, int force = 5);
+    explicit Player(string name);
 
     /*
     * D'tor of Player class
@@ -84,7 +86,7 @@ public:
     *  @return
     *          void
     */
-    void heal(int amount);
+    virtual void heal(int amount);
 
     /*
     *  Player being damaged
@@ -113,7 +115,7 @@ public:
     *  @return
     *          void
     */
-    void addCoins(int amount);
+    virtual void addCoins(int amount);
 
     /*
     *  Paying for extra.
@@ -132,7 +134,7 @@ public:
     *  @return
     *          Player's attack strength.
     */
-    int getAttackStrength() const;
+    virtual int getAttackStrength() const;
 };
 
 
