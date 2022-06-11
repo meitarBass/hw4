@@ -20,4 +20,4 @@ add_executable(hw4
         Cards/Card.h
         Cards/Card.cpp
         Mtmchkin.h
-        Cards/Monster.h Cards/Goblin.cpp Cards/Goblin.h Cards/Monster.cpp Cards/Vampire.cpp Cards/Vampire.h Cards/Dragon.cpp Cards/Dragon.h Cards/Pitfall.cpp Cards/Pitfall.h Cards/Fairy.cpp Cards/Fairy.h Cards/Barfight.cpp Cards/Barfight.h Cards/Treasure.cpp Cards/Treasure.h)
+        Cards/Monster.h Cards/Goblin.cpp Cards/Goblin.h Cards/Monster.cpp Cards/Vampire.cpp Cards/Vampire.h Cards/Dragon.cpp Cards/Dragon.h Cards/Pitfall.cpp Cards/Pitfall.h Cards/Fairy.cpp Cards/Fairy.h Cards/Barfight.cpp Cards/Barfight.h Cards/Treasure.cpp Cards/Treasure.h Cards/Merchant.cpp Cards/Merchant.h)
