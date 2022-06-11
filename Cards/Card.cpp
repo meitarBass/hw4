@@ -3,7 +3,6 @@
 //
 
 #include "Card.h"
-#include "../utilities.h"
 
 void Card::printInfo(std::ostream& os) const{
     printCardDetails(os, this->m_name);
