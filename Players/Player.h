@@ -6,7 +6,7 @@
 #define HW2_PLAYER_H
 
 #include <iostream>
-#include "../../../HW2/utilities.h"
+
 using namespace std;
 
 class Player {
