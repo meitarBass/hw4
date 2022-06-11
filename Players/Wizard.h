@@ -8,7 +8,7 @@
 #include "Player.h"
 
 class Wizard: public Player {
-
+public:
     /*
     * C'tor of Wizard class
     *
@@ -33,6 +33,9 @@ class Wizard: public Player {
 
     void heal(int amount) override;
     void print(ostream &os) const;
+
+private:
+    PLAYER_TYPE type = WIZARD;
 };
 
 

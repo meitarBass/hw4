@@ -46,6 +46,13 @@ public:
     *          int - number of rounds played
     */
     int getNumberOfRounds() const;
+
+    /*
+     * Manually removing copy C'tor and assignment operator,
+     *      so no other versions of a specific game are created;
+     */
+    Mtmchkin(const Mtmchkin& mtmchkin) = delete;
+    Mtmchkin& operator=(Mtmchkin& mtmchkin) = delete;
 };
 
 

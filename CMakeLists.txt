@@ -12,9 +12,10 @@ add_executable(hw4 main.cpp
         Players/Wizard.h
         Players/Rogue.cpp
         Players/Rogue.h
-        #utilities.h
-        #utilities.cpp
+        utilities.h
+        utilities.cpp
         Exception.h
         Cards/Card.h
         Cards/Card.cpp
-        )
+        Mtmchkin.h
+        Cards/Monster.h Cards/Goblin.cpp Cards/Goblin.h Cards/Monster.cpp Cards/Vampire.cpp Cards/Vampire.h Cards/Dragon.cpp Cards/Dragon.h)

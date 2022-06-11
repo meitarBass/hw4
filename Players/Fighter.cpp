@@ -14,5 +14,3 @@ void Fighter::print(ostream &os) const {
 
 
 
-
-

@@ -9,11 +9,17 @@
 
 using namespace std;
 
+/*
+ * All existing types of players.
+ */
+typedef enum {WIZARD, FIGHTER, ROGUE} PLAYER_TYPE;
+
 class Player {
 
 protected:
     int level, coins, force, hp, max_hp;
     string name;
+    PLAYER_TYPE type;
 
     friend ostream& operator<<(ostream& os, const Player& player);
     virtual void print(ostream& os) const = 0;
@@ -139,6 +145,34 @@ public:
     */
     virtual int getAttackStrength() const;
 
+    /*
+     * Get a player's type.
+     *
+     * @return
+     *          Player's type.
+     */
+    virtual PLAYER_TYPE getType() const;
+
+    /*
+    * Get a player's name.
+    *
+    * @return
+    *          Player's name.
+    */
+    string getName() const;
+
+    /*
+     * Lower Player's level by one (1);
+     */
+    void levelDown();
+
+    /*
+    * Get a player's health points.
+    *
+    * @return
+    *          Player's hp.
+    */
+    int getHP() const;
 };
 
 

@@ -8,6 +8,7 @@
 #include "Player.h"
 
 class Rogue: public Player {
+public:
     /*
     * C'tor of Rogue class
     *
@@ -32,6 +33,10 @@ class Rogue: public Player {
 
     void addCoins(int amount) override;
     void print(ostream &os) const;
+
+private:
+    PLAYER_TYPE type = ROGUE;
+
 };
 
 

@@ -99,3 +99,22 @@ int Player::getAttackStrength() const {
 ostream& operator<<(ostream& os, const Player& player) {
     return os;
 }
+
+PLAYER_TYPE Player::getType() const{
+    return this->type;
+}
+
+string Player::getName() const{
+    return this->name;
+}
+
+void Player::levelDown(){
+    if(this->level > 0) {
+        this->level -= 1;
+    }
+
+}
+
+int Player::getHP() const{
+    return this->hp;
+}

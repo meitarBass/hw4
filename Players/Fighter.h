@@ -9,7 +9,7 @@
 
 
 class Fighter: public Player {
-
+public:
     /*
     * C'tor of Fighter class
     *
@@ -34,6 +34,9 @@ class Fighter: public Player {
 
     int getAttackStrength() const override;
     void print(ostream &os) const;
+
+private:
+    PLAYER_TYPE type = FIGHTER;
 };
 
 
