@@ -32,6 +32,7 @@ class Wizard: public Player {
     Wizard(const Wizard&) = default;
 
     void heal(int amount) override;
+    void print(ostream &os) const;
 };
 
 

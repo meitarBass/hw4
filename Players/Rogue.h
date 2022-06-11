@@ -31,6 +31,7 @@ class Rogue: public Player {
     Rogue(const Rogue&) = default;
 
     void addCoins(int amount) override;
+    void print(ostream &os) const;
 };
 
 

@@ -15,6 +15,9 @@ protected:
     int level, coins, force, hp, max_hp;
     string name;
 
+    friend ostream& operator<<(ostream& os, const Player& player);
+    virtual void print(ostream& os) const = 0;
+
 public:
     /*
     * C'tor of Player class
@@ -135,6 +138,7 @@ public:
     *          Player's attack strength.
     */
     virtual int getAttackStrength() const;
+
 };
 
 

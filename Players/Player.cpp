@@ -95,3 +95,7 @@ bool Player::pay(int amount) {
 int Player::getAttackStrength() const {
     return this->force + this->level;
 }
+
+ostream& operator<<(ostream& os, const Player& player) {
+    return os;
+}

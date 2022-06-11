@@ -33,6 +33,7 @@ class Fighter: public Player {
     Fighter(const Fighter&) = default;
 
     int getAttackStrength() const override;
+    void print(ostream &os) const;
 };
 
 
