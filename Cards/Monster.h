@@ -19,7 +19,7 @@ public:
     ~Monster() = default;
 
     void applyEncounter(Player& player) const override;
-    void printInfo(ostream& os) const override;
+    void printInfo(std::ostream& os) const override;
 
 protected:
     int m_force = 0;

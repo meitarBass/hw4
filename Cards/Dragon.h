@@ -20,7 +20,7 @@ class Dragon : public Monster{
     ~Dragon() = default;
 
     void applyEncounter(Player& player) const override;
-    void printInfo(ostream& os) const override;
+    void printInfo(std::ostream& os) const override;
 
 private:
     const int m_force = 25;

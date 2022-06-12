@@ -3,6 +3,7 @@
 //
 
 #include "Player.h"
+using namespace std;
 
 static bool CheckParamValidity(int param, int minimum) {
     return param >= minimum;
@@ -115,6 +116,10 @@ void Player::levelDown(){
 
 }
 
-int Player::getHP() const{
+const int Player::getHP() const{
     return this->hp;
+}
+
+const int Player::getCoins() const{
+    return this->coins;
 }

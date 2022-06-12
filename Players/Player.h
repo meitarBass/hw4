@@ -7,8 +7,6 @@
 
 #include <iostream>
 
-using namespace std;
-
 /*
  * All existing types of players.
  */
@@ -18,11 +16,11 @@ class Player {
 
 protected:
     int level, coins, force, hp, max_hp;
-    string name;
+    std::string name;
     PLAYER_TYPE type;
 
-    friend ostream& operator<<(ostream& os, const Player& player);
-    virtual void print(ostream& os) const = 0;
+    friend std::ostream& operator<<(std::ostream& os, const Player& player);
+    virtual void print(std::ostream& os) const = 0;
 
 public:
     /*
@@ -34,7 +32,7 @@ public:
     * @return
     *      A new instance of player.
     */
-    explicit Player(string name);
+    explicit Player(std::string name);
 
     /*
     * D'tor of Player class
@@ -159,7 +157,7 @@ public:
     * @return
     *          Player's name.
     */
-    string getName() const;
+    std::string getName() const;
 
     /*
      * Lower Player's level by one (1);
@@ -172,7 +170,15 @@ public:
     * @return
     *          Player's hp.
     */
-    int getHP() const;
+    const int getHP() const;
+
+    /*
+    * Get a player's number of coins.
+    *
+    * @return
+    *          Player's coins.
+    */
+    const int getCoins() const;
 };
 
 

@@ -8,6 +8,6 @@ void Rogue::addCoins(int amount) {
     Player::addCoins(amount * 2);
 }
 
-void Rogue::print(ostream &os) const {
+void Rogue::print(std::ostream &os) const {
     os << this->name << " " << this->level << " " << this->force << " " << this->hp << " " << this->coins << " " << "Fighter";
 }

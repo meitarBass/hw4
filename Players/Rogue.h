@@ -32,7 +32,7 @@ public:
     Rogue(const Rogue&) = default;
 
     void addCoins(int amount) override;
-    void print(ostream &os) const;
+    void print(std::ostream &os) const;
 
 private:
     PLAYER_TYPE type = ROGUE;

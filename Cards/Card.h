@@ -37,7 +37,7 @@ public:
      * @return
      *      void
     */
-    virtual void printInfo(ostream& os) const;
+    virtual void printInfo(std::ostream& os) const;
 
 
     /*
@@ -49,7 +49,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Card& card);
 
 protected:
-    string m_name;
+    std::string m_name;
 
 };
 
