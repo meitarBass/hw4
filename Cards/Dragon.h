@@ -7,6 +7,7 @@
 #include "Monster.h"
 
 class Dragon : public Monster{
+public:
     /*
     * C'tor of Dragon class
     *

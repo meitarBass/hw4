@@ -21,8 +21,8 @@ public:
     */
     ~Merchant() = default;
 
-    void applyEncounter(Player& player) const override = 0;
-    void printInfo(std::ostream& os) const override = 0;
+    void applyEncounter(Player& player) const override;
+    void printInfo(std::ostream& os) const override;
     void applyEncounter(Player& player, std::ostream& os, std::istream& is) const;
 
 private:
