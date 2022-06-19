@@ -3,13 +3,12 @@
 //
 
 #include "Player.h"
-using namespace std;
 
 static bool CheckParamValidity(int param, int minimum) {
     return param >= minimum;
 }
 
-Player::Player(string name) {
+Player::Player(std::string name) {
     this->name = name;
     this->hp = 100;
     this->max_hp = 100;
@@ -28,13 +27,13 @@ Player::Player(const Player& player):
 
 
 void Player::printInfo() {
-    cout << "Player Details:" << endl <<
-         "Name: "<< this->name << endl <<
-         "Level: " << this->level << endl <<
-         "Force: " << this->force << endl <<
-         "HP: " << this->hp << endl <<
-         "Coins: " << this->coins << endl <<
-         "------------------------"<< endl;
+    std::cout << "Player Details:" << std::endl <<
+         "Name: "<< this->name << std::endl <<
+         "Level: " << this->level << std::endl <<
+         "Force: " << this->force << std::endl <<
+         "HP: " << this->hp << std::endl <<
+         "Coins: " << this->coins << std::endl <<
+         "------------------------"<< std::endl;
 }
 
 void Player::levelUp() {
@@ -97,7 +96,7 @@ int Player::getAttackStrength() const {
     return this->force + this->level;
 }
 
-ostream& operator<<(ostream& os, const Player& player) {
+std::ostream& operator<<(std::ostream& os, const Player& player) {
     return os;
 }
 
@@ -105,7 +104,7 @@ PLAYER_TYPE Player::getType() const{
     return this->type;
 }
 
-string Player::getName() const{
+std::string Player::getName() const{
     return this->name;
 }
 

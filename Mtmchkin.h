@@ -1,7 +1,29 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
 
-class Mtmchkin{
+#include "Cards/Barfight.h"
+#include "Cards/Dragon.h"
+#include "Cards/Fairy.h"
+#include "Cards/Goblin.h"
+#include "Cards/Merchant.h"
+#include "Cards/Pitfall.h"
+#include "Cards/Treasure.h"
+#include "Cards/Vampire.h"
+#include "Players/Fighter.h"
+#include "Players/Wizard.h"
+#include "Players/Rogue.h"
+#include <queue>
+#include <fstream>
+
+class Mtmchkin {
+
+private:
+    std::deque<Player> leaderboard;
+
+    std::unique_ptr<Player> player_queue;
+    std::unique_ptr<Card> deck;
+
+    int round_number = 0;
 
 public:
     
@@ -13,7 +35,7 @@ public:
     *      A new instance of Mtmchkin.
     */
     Mtmchkin(const std::string fileName);
-    
+
     /*
     * Play the next Round of the game - according to the instruction in the exercise document.
     *

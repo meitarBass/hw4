@@ -4,6 +4,7 @@
 
 #ifndef HW4_DRAGON_H
 #define HW4_DRAGON_H
+
 #include "Monster.h"
 
 class Dragon : public Monster{
