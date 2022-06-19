@@ -12,18 +12,20 @@
 #include "Players/Fighter.h"
 #include "Players/Wizard.h"
 #include "Players/Rogue.h"
-#include <queue>
+#include "Exception.h"
+
+#include <deque>
 #include <fstream>
+#include <memory>
 
 class Mtmchkin {
 
 private:
-    std::deque<Player> leaderboard;
+    std::deque<Player> m_leaderboard; //TODO: why?
+    std::deque<std::unique_ptr<Card>> m_deck;
+    std::deque<std::unique_ptr<Player>> m_playerQueue;
+    int m_roundNumber = 0;
 
-    std::unique_ptr<Player> player_queue;
-    std::unique_ptr<Card> deck;
-
-    int round_number = 0;
 
 public:
     

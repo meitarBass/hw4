@@ -5,6 +5,8 @@
 #ifndef HW4_EXCEPTION_H
 #define HW4_EXCEPTION_H
 
+#include <exception>
+
 class DeckFileNotFound : public std::exception {
 public:
     DeckFileNotFound() = default;
@@ -20,8 +22,10 @@ public:
 };
 
 class DeckFileFormatError : public std::exception {
+private:
+    int m_line;
 public:
-    DeckFileFormatError() = default;
+    explicit DeckFileFormatError(int line) : m_line(line) {};
     ~DeckFileFormatError() override = default;
 
     //TODO: manage line and card printing

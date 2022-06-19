@@ -97,6 +97,7 @@ int Player::getAttackStrength() const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Player& player) {
+    //TODO: check why empty
     return os;
 }
 

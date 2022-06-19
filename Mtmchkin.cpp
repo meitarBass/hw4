@@ -1,6 +1,8 @@
 #include "Mtmchkin.h"
 
 Mtmchkin::Mtmchkin(const std::string fileName) {
+    std::ifstream cardFile;
+    cardFile.open(fileName);
 
     //TODO: Create Deck - from file
 
@@ -9,7 +11,7 @@ Mtmchkin::Mtmchkin(const std::string fileName) {
 }
 
 void Mtmchkin::playRound() {
-    round_number++;
+    m_roundNumber++;
 
     //TODO: Iterate over player_queue
 }
@@ -25,7 +27,7 @@ bool Mtmchkin::isGameOver() const {
 }
 
 int Mtmchkin::getNumberOfRounds() const {
-    return round_number;
+    return m_roundNumber;
 }
 
 
