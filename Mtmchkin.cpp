@@ -7,12 +7,10 @@ Mtmchkin::Mtmchkin(const std::string &fileName) {
 
     //TODO: Create Player queue - from user
     printStartGameMessage();
-
-
     int teamSize = getTeamSize(); // TODO: check if needed: when input is string etc, print invalidSize or invalidInput?
 
     //TODO: continue this part, check input validity etc.
-
+    Mtmchkin::getPlayers(teamSize);
 }
 
 void Mtmchkin::playRound() {
@@ -94,11 +92,24 @@ int Mtmchkin::getNumberOfRounds() const {
     return m_roundNumber;
 }
 
-void getPlayers(int number_of_players) {
-    printInsertPlayerMessage();
+void Mtmchkin::getPlayers(int number_of_players) {
     std::string name, job;
     for(int i = 0 ; i < number_of_players ; i++) {
+        printInsertPlayerMessage();
         std::cin >> name >> job;
+        while(!isClassValid(job)) {
+            printInvalidClass();
+            std::cin >> name >> job;
+
+            if(job == "Rogue") {
+                m_playerQueue.push_back(std::unique_ptr<Player>(new Rogue(name)));
+            } else if( job == "Wizard") {
+                m_playerQueue.push_back(std::unique_ptr<Player>(new Wizard(name)));
+            } else {
+                m_playerQueue.push_back(std::unique_ptr<Player>(new Fighter(name)));
+            }
+
+        }
     }
 }
 
