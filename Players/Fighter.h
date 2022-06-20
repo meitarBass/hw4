@@ -33,7 +33,7 @@ public:
     Fighter(const Fighter&) = default;
 
     int getAttackStrength() const override;
-    void print(std::ostream &os) const;
+    void print(std::ostream &os) const override;
 
 private:
     PLAYER_TYPE type = FIGHTER;

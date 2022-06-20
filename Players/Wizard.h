@@ -32,7 +32,7 @@ public:
     Wizard(const Wizard&) = default;
 
     void heal(int amount) override;
-    void print(std::ostream &os) const;
+    void print(std::ostream &os) const override;
 
 private:
     PLAYER_TYPE type = WIZARD;

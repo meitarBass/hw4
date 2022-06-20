@@ -21,7 +21,7 @@
 class Mtmchkin {
 
 private:
-    std::deque<Player> m_leaderboard; //TODO: why?
+//    std::deque<Player> m_leaderboard; //TODO: why?
     std::deque<std::unique_ptr<Card>> m_deck;
     std::deque<std::unique_ptr<Player>> m_playerQueue;
     int m_roundNumber = 0;
