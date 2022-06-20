@@ -26,6 +26,15 @@ private:
     std::deque<std::unique_ptr<Player>> m_playerQueue;
     int m_roundNumber = 0;
 
+    void createDeck(const std::string &fileName);
+
+    int getTeamSize();
+    void getPlayers(int number_of_players);
+
+    static void checkDeckSize(int size);
+    static bool isGroupSizeValid(int size);
+    static bool isNameValid(std::string player_name); // Check if required
+    static bool isClassValid(std::string player_class);
 
 public:
     
