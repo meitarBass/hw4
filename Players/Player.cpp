@@ -3,6 +3,7 @@
 //
 
 #include "Player.h"
+#include "../utilities.h"
 
 static bool CheckParamValidity(int param, int minimum) {
     return param >= minimum;
@@ -97,7 +98,19 @@ int Player::getAttackStrength() const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Player& player) {
-    //TODO: check why empty
+    std::string job;
+    switch (player.getType()){
+        case FIGHTER:
+            job = "Fighter";
+            break;
+        case WIZARD:
+            job = "Wizard";
+            break;
+        case ROGUE:
+            job = "Rogue";
+            break;
+    }
+    printPlayerDetails(os, player.getName(), job, player.getLevel(), player.force, player.getHP(), player.getCoins());
     return os;
 }
 

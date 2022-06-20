@@ -24,11 +24,12 @@ public:
 class DeckFileFormatError : public std::exception {
 private:
     int m_line;
+    std::string errorStr = "Deck File Error: File format error in line "+std::to_string(m_line)+"\n";
 public:
     explicit DeckFileFormatError(int line) : m_line(line) {};
     ~DeckFileFormatError() override = default;
 
     //TODO: manage line and card printing
-    const char* what() const noexcept override {return "Deck File Error: File format error in line <lineNumberInDeckfile>\n";}
+    const char* what() const noexcept override {return errorStr.c_str();}
 };
 #endif //HW4_EXCEPTION_H
