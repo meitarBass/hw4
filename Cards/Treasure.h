@@ -13,7 +13,7 @@ public:
     * C'tor of Treasure class
     *
     */
-    Treasure() = default;
+    Treasure();
 
     /*
     * D'tor of Treasure class

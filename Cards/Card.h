@@ -15,10 +15,7 @@ public:
      * @return
      *      A new instance of Card.
     */
-    Card() {
-        m_name = "a";
-    };
-
+    Card(const std::string &name);
 
     /*
      * Handling the player's applyEncounter with the card:
@@ -49,7 +46,6 @@ public:
 
 protected:
     std::string m_name;
-
 };
 
 #endif //EX2_Card_H

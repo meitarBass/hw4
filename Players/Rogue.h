@@ -13,7 +13,7 @@ public:
     * C'tor of Rogue class
     *
     */
-    using Player::Player;
+    Rogue(const std::string &name);
 
     /*
     * D'tor of Rogue class
@@ -33,10 +33,6 @@ public:
 
     void addCoins(int amount) override;
     void print(std::ostream &os) const override;
-
-private:
-    PLAYER_TYPE type = ROGUE;
-
 };
 
 

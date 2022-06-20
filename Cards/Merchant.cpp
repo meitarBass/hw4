@@ -4,6 +4,11 @@
 
 #include "Merchant.h"
 #include <ostream>
+
+Merchant::Merchant() : Card("Merchant") {
+
+}
+
 void Merchant::applyEncounter(Player& player) const{
     this->applyEncounter(player, std::cout, std::cin);
 }
@@ -19,13 +24,22 @@ void Merchant::applyEncounter(Player& player, std::ostream& os, std::istream& is
     int playerCoins = player.getCoins();
     int cost = 0;
     printMerchantInitialMessageForInteractiveEncounter(os, player.getName(), playerCoins);
-    getline(is, input);
-    inputInt = stoi(input);
-    while(inputInt <= buyNothing || inputInt >= buyForce){
-        printInvalidInput();
-        getline(is, input);
-        inputInt = stoi(input);
-    };
+    do {
+        try {
+            std::cin >> inputInt;
+            break;
+        } catch(std::invalid_argument& e) {
+            printInvalidInput();
+            std::cin.clear();
+            std::cin.ignore(256,'\n');
+        }
+    } while (true);
+//
+//    while(inputInt <= buyNothing || inputInt >= buyForce){
+//        printInvalidInput();
+//        getline(is, input);
+//        inputInt = stoi(input);
+//    };
 
     switch (inputInt) {
         case buyHP:
@@ -42,6 +56,7 @@ void Merchant::applyEncounter(Player& player, std::ostream& os, std::istream& is
             if(playerCoins >= forceCost){
                 player.buff(forceBoost);
                 cost = forceCost;
+                player.pay(cost);
             }
             else {
                 printMerchantInsufficientCoins(os);

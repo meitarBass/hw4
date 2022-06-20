@@ -13,7 +13,7 @@ public:
     * C'tor of Wizard class
     *
     */
-    using Player::Player;
+    Wizard(const std::string &name);
 
     /*
     * D'tor of Wizard class
@@ -33,9 +33,6 @@ public:
 
     void heal(int amount) override;
     void print(std::ostream &os) const override;
-
-private:
-    PLAYER_TYPE type = WIZARD;
 };
 
 

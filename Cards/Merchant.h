@@ -13,7 +13,7 @@ public:
     * C'tor of Merchant class
     *
     */
-    Merchant() = default;
+    Merchant();
 
     /*
     * D'tor of Merchant class

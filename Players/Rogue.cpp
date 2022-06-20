@@ -4,6 +4,8 @@
 
 #include "Rogue.h"
 
+Rogue::Rogue(const std::string &name) : Player(name, PLAYER_TYPE::ROGUE) {}
+
 void Rogue::addCoins(int amount) {
     Player::addCoins(amount * 2);
 }

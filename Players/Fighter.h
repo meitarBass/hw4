@@ -14,7 +14,7 @@ public:
     * C'tor of Fighter class
     *
     */
-    using Player::Player;
+    Fighter(const std::string &name);
 
     /*
     * D'tor of Fighter class
@@ -34,9 +34,6 @@ public:
 
     int getAttackStrength() const override;
     void print(std::ostream &os) const override;
-
-private:
-    PLAYER_TYPE type = FIGHTER;
 };
 
 

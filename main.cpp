@@ -2,6 +2,6 @@
 
 int main()
 {
-    Mtmchkin("../inputs/deck.txt");
+    Mtmchkin("../inputs/deck.txt").printLeaderBoard();
     return 0;
 }

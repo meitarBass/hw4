@@ -17,11 +17,6 @@ public:
     *
     */
     ~Goblin();
-
-private:
-    const int m_force = 6;
-    const int m_damageUponLoss = 10;
-    const int m_coins = 2;
 };
 
 

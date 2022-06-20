@@ -1,7 +1,14 @@
 #include "Monster.h"
+Monster::Monster(const std::string& name, const int force, const int damage_upon_loss, const int coins):
+    Card(name),
+    m_force(force),
+    m_damageUponLoss(damage_upon_loss),
+    m_coins(coins)
+
+    {}
 
 void Monster::applyEncounter(Player& player) const{
-    if(player.getLevel() >= this->m_force){
+    if(player.getAttackStrength() >= this->m_force){
         player.levelUp();
         player.addCoins(this->m_coins);
         printWinBattle(player.getName(), this->m_name);

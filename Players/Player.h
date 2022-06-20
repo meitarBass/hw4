@@ -10,7 +10,7 @@
 /*
  * All existing types of players.
  */
-typedef enum {WIZARD, FIGHTER, ROGUE} PLAYER_TYPE;
+typedef enum {FIGHTER, WIZARD, ROGUE} PLAYER_TYPE;
 
 class Player {
 
@@ -32,7 +32,7 @@ public:
     * @return
     *      A new instance of player.
     */
-    explicit Player(std::string name);
+    Player(std::string name, PLAYER_TYPE type);
 
     /*
     * D'tor of Player class
@@ -160,9 +160,9 @@ public:
     std::string getName() const;
 
     /*
-     * Lower Player's level by one (1);
+     * Lower Player's force by one (1);
      */
-    void levelDown();
+    void forceDown();
 
     /*
     * Get a player's health points.
@@ -179,6 +179,8 @@ public:
     *          Player's coins.
     */
     const int getCoins() const;
+
+    bool isStillPlaying() const;
 };
 
 

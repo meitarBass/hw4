@@ -13,7 +13,7 @@ public:
     * C'tor of Fairy class
     *
     */
-    Fairy() = default;
+    Fairy();
 
     /*
     * D'tor of Fairy class
