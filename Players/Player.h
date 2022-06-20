@@ -40,7 +40,7 @@ public:
     * @return
     *      Safely delete player object.
     */
-    ~Player();
+    virtual ~Player();
 
     /*
     * Copy constructor of Player class

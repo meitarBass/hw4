@@ -1,6 +1,3 @@
-//
-// Created by Daniel_Meents on 07/04/2022.
-//
 #ifndef EX2_Card_H
 #define EX2_Card_H
 
@@ -18,7 +15,9 @@ public:
      * @return
      *      A new instance of Card.
     */
-    Card() = default;
+    Card() {
+        m_name = "a";
+    };
 
 
     /*
@@ -44,7 +43,7 @@ public:
      * Here we are explicitly telling the compiler to use the default methods
     */
     Card(const Card&) = default;
-    ~Card() = default;
+    virtual ~Card() = default;
     Card& operator=(const Card& other) = default;
     friend std::ostream& operator<<(std::ostream& os, const Card& card);
 

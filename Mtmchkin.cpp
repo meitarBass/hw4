@@ -54,7 +54,6 @@ void Mtmchkin::createDeck(const std::string &fileName) {
     std::string tempCard;
     int line_number = 0;
     std::getline(cardFile, tempCard);
-    std::cout << tempCard << std::endl;
     while(!tempCard.empty()){
         if(tempCard == "Fairy"){
             m_deck.push_back(std::unique_ptr<Card>(new Fairy()));
