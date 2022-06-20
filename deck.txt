@@ -4,3 +4,6 @@ Barfight
 Fairy
 Goblin
 Vampire
+Fairy
+Goblin
+Vampire

@@ -5,11 +5,8 @@ Mtmchkin::Mtmchkin(const std::string &fileName) {
     createDeck(fileName);
     checkDeckSize(m_deck.size());
 
-    //TODO: Create Player queue - from user
     printStartGameMessage();
     int teamSize = getTeamSize(); // TODO: check if needed: when input is string etc, print invalidSize or invalidInput?
-
-    //TODO: continue this part, check input validity etc.
     Mtmchkin::getPlayers(teamSize);
 }
 
@@ -27,6 +24,8 @@ int Mtmchkin::getTeamSize() {
 
     while(!isGroupSizeValid(teamSize)) {
         printInvalidTeamSize();
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
         std::cin >> teamSize;
     }
     return teamSize;
@@ -52,9 +51,9 @@ void Mtmchkin::createDeck(const std::string &fileName) {
 
     //Get Card deck from file
     std::string tempCard;
-    int line_number = 0;
+    int line_number = 1;
     std::getline(cardFile, tempCard);
-    while(!tempCard.empty()){
+    while(!cardFile.eof()){
         if(tempCard == "Fairy"){
             m_deck.push_back(std::unique_ptr<Card>(new Fairy()));
         }
@@ -95,10 +94,17 @@ void Mtmchkin::getPlayers(int number_of_players) {
     std::string name, job;
     for(int i = 0 ; i < number_of_players ; i++) {
         printInsertPlayerMessage();
-        std::cin >> name >> job;
+
+        std::cin >> name;
+        while(!isNameValid(name)) {
+            printInvalidName();
+            std::cin >> name;
+        }
+
+        std::cin >> job;
         while(!isClassValid(job)) {
             printInvalidClass();
-            std::cin >> name >> job;
+            std::cin >> job;
 
             if(job == "Rogue") {
                 m_playerQueue.push_back(std::unique_ptr<Player>(new Rogue(name)));
@@ -122,11 +128,11 @@ bool Mtmchkin::isGroupSizeValid(int size) {
     return size >= 2 && size <= 6;
 }
 
-bool Mtmchkin::isNameValid(std::string player_name) {
-
+bool Mtmchkin::isNameValid(const std::string &player_name) {
+    return(player_name.length() <= 15 && !std::any_of(player_name.begin(), player_name.end(), ::isdigit));
 }
 
-bool Mtmchkin::isClassValid(std::string player_class) {
-    return !(player_class != "Fighter" && player_class != "Wizard" && player_class != "Rogue");
+bool Mtmchkin::isClassValid(const std::string &player_class) {
+    return(player_class == "Fighter" || player_class == "Wizard" || player_class == "Rogue");
 }
 

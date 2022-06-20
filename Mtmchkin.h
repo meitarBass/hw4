@@ -21,7 +21,6 @@
 class Mtmchkin {
 
 private:
-//    std::deque<Player> m_leaderboard; //TODO: why?
     std::deque<std::unique_ptr<Card>> m_deck;
     std::deque<std::unique_ptr<Player>> m_playerQueue;
     int m_roundNumber = 0;
@@ -33,8 +32,8 @@ private:
 
     static void checkDeckSize(int size);
     static bool isGroupSizeValid(int size);
-    static bool isNameValid(std::string player_name); // Check if required
-    static bool isClassValid(std::string player_class);
+    static bool isNameValid(const std::string &player_name); // Check if required
+    static bool isClassValid(const std::string &player_class);
 
 public:
     
