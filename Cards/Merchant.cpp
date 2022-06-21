@@ -12,8 +12,6 @@ Merchant::Merchant() : Card("Merchant") {
 void Merchant::applyEncounter(Player& player) const{
     this->applyEncounter(player, std::cout, std::cin);
 }
-void Merchant::printInfo(std::ostream& os) const{
-}
 
 void Merchant::applyEncounter(Player& player, std::ostream& os, std::istream& is) const{
     const int buyNothing = 0;
@@ -34,12 +32,6 @@ void Merchant::applyEncounter(Player& player, std::ostream& os, std::istream& is
             std::cin.ignore(256,'\n');
         }
     } while (true);
-//
-//    while(inputInt <= buyNothing || inputInt >= buyForce){
-//        printInvalidInput();
-//        getline(is, input);
-//        inputInt = stoi(input);
-//    };
 
     switch (inputInt) {
         case buyHP:

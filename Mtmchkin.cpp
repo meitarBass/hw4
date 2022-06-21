@@ -1,19 +1,24 @@
 #include "Mtmchkin.h"
 #include <algorithm>
+static void readline_without_cr(std::ifstream& ifstream, std::string& out) {
+    std::getline(ifstream, out);
+    // this is because the segel added files with \r to server : ^) .
+    out.erase(std::remove(out.begin(), out.end(), '\r'), out.end());
+}
 
 Mtmchkin::Mtmchkin(const std::string &fileName) {
     //Try opening the file by given file name.
+    printStartGameMessage();
     createDeck(fileName);
     checkDeckSize(m_deck.size());
 
-    printStartGameMessage();
     int teamSize = getTeamSize(); // TODO: check if needed: when input is string etc, print invalidSize or invalidInput?
     Mtmchkin::getPlayers(teamSize);
 }
 
 void Mtmchkin::playRound() {
     printRoundStartMessage(++m_roundNumber);
-    for (int i = 0; i < m_playerQueue.size(); i++) {
+    for (unsigned int i = 0; i < m_playerQueue.size(); i++) {
         withdrawCard();
     }
     if (isGameOver()) {
@@ -44,7 +49,7 @@ void Mtmchkin::printLeaderBoard() const {
 }
 
 bool Mtmchkin::isGameOver() const {
-    return m_number_of_losers + m_number_of_winners == m_leaderboard.size();
+    return m_number_of_losers + m_number_of_winners == int(m_leaderboard.size());
 }
 
 void Mtmchkin::createDeck(const std::string &fileName) {
@@ -56,8 +61,9 @@ void Mtmchkin::createDeck(const std::string &fileName) {
 
     //Get Card deck from file
     std::string tempCard;
+    readline_without_cr(cardFile, tempCard);
     int line_number = 1;
-    std::getline(cardFile, tempCard);
+
     while (!cardFile.eof() || !tempCard.empty()) {
         if (tempCard == "Fairy") {
             m_deck.push_back(std::unique_ptr<Card>(new Fairy()));
@@ -80,7 +86,7 @@ void Mtmchkin::createDeck(const std::string &fileName) {
         }
         line_number++;
         tempCard = "";
-        std::getline(cardFile, tempCard);
+        readline_without_cr(cardFile, tempCard);
     }
 }
 

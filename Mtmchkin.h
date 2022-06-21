@@ -33,7 +33,7 @@ private:
     void createDeck(const std::string &fileName);
     void pushData(Player *player);
 
-    int getTeamSize();
+    static int getTeamSize();
     void getPlayers(int number_of_players);
 
     static void checkDeckSize(int size);
