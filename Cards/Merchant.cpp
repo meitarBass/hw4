@@ -13,25 +13,33 @@ void Merchant::applyEncounter(Player& player) const{
     this->applyEncounter(player, std::cout, std::cin);
 }
 
+int getMerchantInput(Player& player, std::ostream& os, std::istream& is, int playerCoins) {
+    printMerchantInitialMessageForInteractiveEncounter(os, player.getName(), playerCoins);
+
+    std::string input;
+    int inputInt = 0;
+
+    do {
+        try {
+            std::getline(std::cin, input);
+            inputInt = std::stoi(input);
+
+            if(inputInt >= 0 && inputInt <= 2) {
+                return inputInt;
+            }
+        } catch(std::exception& e) {}
+        printInvalidInput();
+    }while(true);
+}
+
 void Merchant::applyEncounter(Player& player, std::ostream& os, std::istream& is) const{
     const int buyNothing = 0;
     const int buyHP = 1;
     const int buyForce = 2;
-    std::string input;
-    int inputInt = -1;
     int playerCoins = player.getCoins();
     int cost = 0;
-    printMerchantInitialMessageForInteractiveEncounter(os, player.getName(), playerCoins);
-    do {
-        try {
-            std::cin >> inputInt;
-            break;
-        } catch(std::invalid_argument& e) {
-            printInvalidInput();
-            std::cin.clear();
-            std::cin.ignore(256,'\n');
-        }
-    } while (true);
+
+    int inputInt = getMerchantInput(player, os, is, playerCoins);
 
     switch (inputInt) {
         case buyHP:
