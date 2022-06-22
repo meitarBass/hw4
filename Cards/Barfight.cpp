@@ -4,6 +4,8 @@
 
 #include "Barfight.h"
 
+Barfight::Barfight() : Card("Barfight"){}
+
 void Barfight::applyEncounter(Player& player) const{
     bool isFighter = player.getType() == this->ignore;
     if(!isFighter) {

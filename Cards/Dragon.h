@@ -13,7 +13,7 @@ public:
     * C'tor of Dragon class
     *
     */
-    Dragon() = default;
+    Dragon();
 
     /*
     * D'tor of Dragon class
@@ -23,11 +23,6 @@ public:
 
     void applyEncounter(Player& player) const override;
     void printInfo(std::ostream& os) const override;
-
-private:
-    const int m_force = 25;
-    const int m_coins = 1000;
-
 };
 
 

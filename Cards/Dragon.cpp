@@ -3,9 +3,11 @@
 //
 
 #include "Dragon.h"
+Dragon::Dragon() : Monster("Dragon", 25, -1, 1000) {
 
+}
 void Dragon::applyEncounter(Player& player) const{
-    if(player.getLevel() >= this->m_force){
+    if(player.getAttackStrength() >= this->m_force){
         player.levelUp();
         player.addCoins(this->m_coins);
         printWinBattle(player.getName(), this->m_name);

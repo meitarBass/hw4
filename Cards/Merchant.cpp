@@ -4,28 +4,42 @@
 
 #include "Merchant.h"
 #include <ostream>
+
+Merchant::Merchant() : Card("Merchant") {
+
+}
+
 void Merchant::applyEncounter(Player& player) const{
     this->applyEncounter(player, std::cout, std::cin);
 }
-void Merchant::printInfo(std::ostream& os) const{
+
+int getMerchantInput(Player& player, std::ostream& os, std::istream& is, int playerCoins) {
+    printMerchantInitialMessageForInteractiveEncounter(os, player.getName(), playerCoins);
+
+    std::string input;
+    int inputInt = 0;
+
+    do {
+        try {
+            std::getline(std::cin, input);
+            inputInt = std::stoi(input);
+
+            if(inputInt >= 0 && inputInt <= 2) {
+                return inputInt;
+            }
+        } catch(std::exception& e) {}
+        printInvalidInput();
+    }while(true);
 }
 
 void Merchant::applyEncounter(Player& player, std::ostream& os, std::istream& is) const{
     const int buyNothing = 0;
     const int buyHP = 1;
     const int buyForce = 2;
-    std::string input;
-    int inputInt = -1;
     int playerCoins = player.getCoins();
     int cost = 0;
-    printMerchantInitialMessageForInteractiveEncounter(os, player.getName(), playerCoins);
-    getline(is, input);
-    inputInt = stoi(input);
-    while(inputInt <= buyNothing || inputInt >= buyForce){
-        printInvalidInput();
-        getline(is, input);
-        inputInt = stoi(input);
-    };
+
+    int inputInt = getMerchantInput(player, os, is, playerCoins);
 
     switch (inputInt) {
         case buyHP:
@@ -42,6 +56,7 @@ void Merchant::applyEncounter(Player& player, std::ostream& os, std::istream& is
             if(playerCoins >= forceCost){
                 player.buff(forceBoost);
                 cost = forceCost;
+                player.pay(cost);
             }
             else {
                 printMerchantInsufficientCoins(os);

@@ -13,7 +13,7 @@ public:
     * C'tor of Pitfall class
     *
     */
-    Pitfall() = default;
+    Pitfall();
 
     /*
     * D'tor of Pitfall class

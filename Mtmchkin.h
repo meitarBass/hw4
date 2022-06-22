@@ -17,15 +17,33 @@
 #include <deque>
 #include <fstream>
 #include <memory>
+#include <vector>
+#include <algorithm>
 
 class Mtmchkin {
 
 private:
-//    std::deque<Player> m_leaderboard; //TODO: why?
     std::deque<std::unique_ptr<Card>> m_deck;
-    std::deque<std::unique_ptr<Player>> m_playerQueue;
-    int m_roundNumber = 0;
+    std::deque<std::shared_ptr<Player>> m_playerQueue;
+    std::vector<std::shared_ptr<Player>> m_leaderboard;
 
+    int m_roundNumber = 0;
+    int m_number_of_winners = 0;
+    int m_number_of_losers = 0;
+
+    void createDeck(const std::string &fileName);
+    void pushData(Player *player);
+
+    static int getTeamSize();
+    void getPlayers(int number_of_players);
+
+    static void checkDeckSize(int size);
+    static bool isGroupSizeValid(int size);
+    static bool isNameValid(const std::string &player_name); // Check if required
+    static bool isClassValid(const std::string &player_class);
+    static void clearBuffer();
+
+    void withdrawCard();
 
 public:
     

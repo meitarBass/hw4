@@ -9,12 +9,12 @@ static bool CheckParamValidity(int param, int minimum) {
     return param >= minimum;
 }
 
-Player::Player(std::string name) {
+Player::Player(std::string name, PLAYER_TYPE type) : type(type) {
     this->name = name;
     this->hp = 100;
     this->max_hp = 100;
-    this->force = 10;
-    this->coins = 0;
+    this->force = 5;
+    this->coins = 10;
     this->level = 1;
 }
 
@@ -122,9 +122,9 @@ std::string Player::getName() const{
     return this->name;
 }
 
-void Player::levelDown(){
-    if(this->level > 0) {
-        this->level -= 1;
+void Player::forceDown() {
+    if(this->force > 0) {
+        this->force -= 1;
     }
 
 }
@@ -135,4 +135,8 @@ const int Player::getHP() const{
 
 const int Player::getCoins() const{
     return this->coins;
+}
+
+bool Player::isStillPlaying() const {
+    return !(isKnockedOut() || getLevel() == 10);
 }

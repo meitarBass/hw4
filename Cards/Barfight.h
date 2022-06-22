@@ -7,13 +7,13 @@
 
 #include "Card.h"
 
-class Barfight : public Card{
+class Barfight : public Card {
 public:
     /*
     * C'tor of Barfight class
     *
     */
-    Barfight() = default;
+    Barfight();
 
     /*
     * D'tor of Barfoght class

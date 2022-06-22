@@ -12,7 +12,7 @@ public:
     * C'tor of Vampire class
     *
     */
-    Vampire() = default;
+    Vampire();
 
     /*
     * D'tor of Vampire class
@@ -21,10 +21,6 @@ public:
     ~Vampire() = default;
 
     void applyEncounter(Player& player) const override;
-private:
-    const int m_force = 10;
-    const int m_damageUponLoss = 10;
-    const int m_coins = 2;
 };
 
 

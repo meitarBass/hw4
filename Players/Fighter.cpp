@@ -1,5 +1,7 @@
 #include "Fighter.h"
 
+Fighter::Fighter(const std::string &name) : Player(name, PLAYER_TYPE::FIGHTER) {}
+
 int Fighter::getAttackStrength() const {
     return this->force * 2 + this->level;
 }

@@ -10,7 +10,7 @@ public:
     * Default C'tor of Monster class
     *
     */
-    Monster() = default;
+    Monster(const std::string& name, const int force, const int damage_upon_loss, const int coins);
 
     /*
     * Default D'tor of Monster class
