@@ -18,6 +18,7 @@
 #include <fstream>
 #include <memory>
 #include <vector>
+#include <algorithm>
 
 class Mtmchkin {
 

@@ -1,8 +1,7 @@
 #include "Mtmchkin.h"
-#include <algorithm>
+
 static void readline_without_cr(std::ifstream& ifstream, std::string& out) {
     std::getline(ifstream, out);
-    // this is because the segel added files with \r to server : ^) .
     out.erase(std::remove(out.begin(), out.end(), '\r'), out.end());
 }
 
@@ -27,17 +26,21 @@ void Mtmchkin::playRound() {
 }
 
 int Mtmchkin::getTeamSize() {
-    printEnterTeamSizeMessage();
-
     int teamSize;
-    std::cin >> teamSize;
+    std::string input;
 
-    while (!isGroupSizeValid(teamSize)) {
+    do {
+        printEnterTeamSizeMessage();
+        try {
+            std::getline(std::cin, input);
+            teamSize = std::stoi(input);
+
+            if(isGroupSizeValid(teamSize)) {
+                return teamSize;
+            }
+        } catch(std::exception& e) {}
         printInvalidTeamSize();
-        clearBuffer();
-        std::cin >> teamSize;
-    }
-    return teamSize;
+    }while(true);
 }
 
 void Mtmchkin::printLeaderBoard() const {
@@ -94,17 +97,38 @@ int Mtmchkin::getNumberOfRounds() const {
     return m_roundNumber;
 }
 
+std::vector<std::string> split(const std::string& i_str, const std::string& i_delim)
+{
+    std::vector<std::string> result;
+
+    size_t found = i_str.find(i_delim);
+    size_t startIndex = 0;
+
+    while(found != std::string::npos)
+    {
+        result.push_back(std::string(i_str.begin()+startIndex, i_str.begin()+found));
+        startIndex = found + i_delim.size();
+        found = i_str.find(i_delim, startIndex);
+    }
+    if(startIndex != i_str.size())
+        result.push_back(std::string(i_str.begin()+startIndex, i_str.end()));
+    return result;
+}
+
 void Mtmchkin::getPlayers(int number_of_players) {
-    std::string name, job;
+    std::string name, job, vector;
     for (int i = 0; i < number_of_players; i++) {
+
         printInsertPlayerMessage();
         do {
-            std::cin >> name;
+            std::getline(std::cin, vector);
+            name = split(vector, " ")[0];
+            job = split(vector, " ")[1];
             if (!isNameValid(name)) {
                 printInvalidName();
                 continue;
             }
-            std::cin >> job;
+
             if (job == "Rogue") {
                 pushData(new Rogue(name));
                 break;
@@ -137,8 +161,12 @@ bool Mtmchkin::isGroupSizeValid(int size) {
     return size >= 2 && size <= 6;
 }
 
+bool isNotAlpha(const char c) {
+    return !std::isalpha(c);
+}
+
 bool Mtmchkin::isNameValid(const std::string &player_name) {
-    return (player_name.length() <= 15 && !std::any_of(player_name.begin(), player_name.end(), ::isdigit));
+    return (player_name.length() <= 15 && !std::any_of(player_name.begin(), player_name.end(), isNotAlpha));
 }
 
 bool Mtmchkin::isClassValid(const std::string &player_class) {
